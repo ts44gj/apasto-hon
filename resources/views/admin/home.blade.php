@@ -19,12 +19,12 @@
                             <a href="{{action('PostController@create')}}">post</a>
                         </div>
                         <div>
-                              <a href="{{action('PostController@show',auth()->user()->id)}}">timeline</a>
+                              <a href="{{action('PostController@admin_show',Auth::user()->id)}}">my_timeline</a>
+                        </div>
+                        <div>
+                              <a href="{{action('PostController@admin_showTimeline')}}">all_timeline</a>
                         </div>
                 </div>
     </div>
 </div>
-@foreach($posts as $post)
-<a href="{{ route('show',$post->id)}}">aaaaa</a>
-@endforeach
 @endsection

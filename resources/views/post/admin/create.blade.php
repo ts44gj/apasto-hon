@@ -1,7 +1,7 @@
 @include('layouts.admin.app')
 @section('title','投稿')
-
-     <button class="btn btn-danger" type="submit">admin_home</button>
+<a href="{{route('admin.home.index')}}">
+     <button class="btn btn-danger" type="submit">store_home</button>
 </a>
 
 <div class="row justify-content-center">

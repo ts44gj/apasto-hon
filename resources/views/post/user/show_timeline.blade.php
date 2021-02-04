@@ -1,9 +1,13 @@
-@include('layouts.admin.app')
+@include('layouts.user.app')
 
 @section('content')
-
-    <a href="{{route('admin.home.index')}}">
-        <button class="btn btn-danger" type="submit">store_home</button>
+    <a href="{{action('LinkController@showTimeline')}}">
+        <button class="btn btn-danger" type="submit">all_timeline</button>
+    </a>
+    <br>
+    <br>
+    <a href="{{route('user.home.index')}}">
+        <button class="btn btn-danger" type="submit">home</button>
     </a>
 
     <div class="row justify-content-center">

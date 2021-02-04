@@ -15,9 +15,7 @@
                     @endif
 
                     You are logged in!
-                    <div>
-                            <a href="{{action('UserPostController@user_create')}}">post</a>
-                        </div>
+
                         <div>
                               <a href="{{action('LinkController@showTimeline')}}">timeline</a>
                         </div>

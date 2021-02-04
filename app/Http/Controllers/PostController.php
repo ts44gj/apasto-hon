@@ -7,6 +7,7 @@ use App\Models\Admin;
 use App\Models\User;
 use App\Post;
 use Illuminate\Support\Facades\Auth;
+use \InterventionImage;
 
 class PostController extends Controller
 {
@@ -32,6 +33,8 @@ class PostController extends Controller
             //upload
             $request->file('image')->storeAs('public/images',$fileName);
 
+
+
             $fullFilePath = '/storage/images/'.$fileName;
             $text = $request ->input('text');
 
@@ -41,33 +44,25 @@ class PostController extends Controller
                 'image'=>$fullFilePath,
                 'text'=> $text
             ]);
+
+
         }
         return redirect(route('admin.home.index'));
     }
 
+     //タイムライン画面を表示
+    public function admin_showTimeline(){
 
-        public function output(){
-        $user_id = Auth::id();
-        $user_images = Image::whereUser_id($user_id)->get();
-        return view('post.admin.output', ['user_images' => $user_images]);
-
-        }
-               //タイムライン画面を表示
-    public function showTimeline(){
-        $posts=Post::all();
-        $names=Admin::all();
-        return view('post.admin.timeline',['posts' => $posts],['name'=>$names]);
+        $posts = Post::latest()->get();
+        return view('post.admin.timeline',['posts' => $posts],);
     }
 
+     //お店毎のタイムライン画面を表示
+    public function admin_show($admin_id){
 
-    public function show($id){
-
-        //$id=Admin::all();
-        //$admin = Admin::get();
-        //$admins = Admin::where('id', $id)->first();
-        $posts=Admin::where('id')->get();
-        return view('post.admin.show_timeline.',['posts'=>$posts],);
-    }
+        $posts =Post::where('admin_id',$admin_id)->latest()->get();
+        return view('post.admin.show_timeline')->with('posts',$posts);
+}
 
 
 

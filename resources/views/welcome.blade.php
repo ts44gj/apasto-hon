@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Apasto</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -75,12 +75,12 @@
             @if (Route::has('user.login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('user/home') }}">Home</a>
+                        <a href="{{ url('user/home') }}">User_Home</a>
                     @else
-                        <a href="{{ route('user.login') }}">Login</a>
+                        <a href="{{ route('user.login') }}">User_Login</a>
 
                         @if (Route::has('user.register'))
-                            <a href="{{ route('user.register') }}">Register</a>
+                            <a href="{{ route('user.register') }}">User_Register</a>
                         @endif
                     @endauth
                 </div>
@@ -89,12 +89,12 @@
              @if (Route::has('admin.login'))
                 <div class="top-left links">
                     @auth
-                        <a href="{{ url('admin/home') }}">Admin_Home</a>
+                        <a href="{{ url('admin/home') }}">Store_Home</a>
                     @else
-                        <a href="{{ route('admin.login') }}">admin_Login</a>
+                        <a href="{{ route('admin.login') }}">Store_Login</a>
 
                         @if (Route::has('admin.register'))
-                            <a href="{{ route('admin.register') }}">admin_Register</a>
+                            <a href="{{ route('admin.register') }}">Store_Register</a>
                         @endif
                     @endauth
                 </div>

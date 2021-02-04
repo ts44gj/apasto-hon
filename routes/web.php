@@ -51,31 +51,23 @@ Route::group(['middleware'=>['auth:admin'],], function(){
 Route::resource('posts', 'PostController', [
       'only' => ['create', 'store']
   ]);
-  //Route::resource('/{$id}','PostController',[
-        //'only' => ['show']
-    //]);
 });
 
-//保存した画像を表示するページ
-Route::get('/output', 'PostController@output');
-//userでtimelineを表示
-Route::get('post/user/timeline/','LinkController@showTimeline')->name('showTimeline');
+//userでall_timelineを表示
+Route::get('post/user/timeline/','LinkController@showTimeline')->name('Timeline');
 
-//Route::resource('post/admin/show_timeline/','linkController',[
-  //    'only' => ['show']
- // ]);
- Route::get('post/admin/show_timeline/{admin_id}','LinkController@show')->name('show');
+//userでお店毎のtimelineを表示
+Route::get('post/user/show_timeline/{admin_id}','LinkController@show')->name('show');
 
+//adminでall_timelineを表示
+Route::get('post/admin/timeline/','PostController@admin_showTimeline')->name('admin_Timeline');
 
-//adminでtimelineを表示
-Route::get('/post/admin/timeline/','PostController@showTimeline')->name('showTimeline');
+//adminでお店毎のtimelineを表示
+Route::get('/post/admin/show_timeline/{admin_id}','PostController@admin_show')->name('admin_show');
 
 
-//userでadminのtimelineを表示
-//Route::get('post/admin/show_timeline/{$admin_id}','linkController@show',)->name('show');
 
 
-Route::get('post/user/create', 'UserPostController@user_create');
 
-Route::post('post/user/create', 'UserPostController@user_store')->name('user_create');
+
 
