@@ -11,14 +11,14 @@
     </a>
 
     <div class="row justify-content-center">
-    <p>store_timeline</p>
+    <p>{{$user_name}}</p>
     </div>
 
  <div class="">
 
       @foreach ($posts as $post )
             <div class="row justify-content-center">
-                <img src="{{ asset($post -> image) }}">
+                <img class="img-responsive" src="{{ asset($post -> image) }}">
             </div>
             <div class="row justify-content-center">
               <p class="">{{ $post -> text }}</p>

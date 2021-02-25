@@ -8,20 +8,31 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
 
         <!-- Styles -->
         <style>
+            .jumbotron {
+                background:url("{{asset('image/799437.jpg')}}") center no-repeat;
+                background-size: cover;
+            }
             html, body {
+                background:url("{{asset('image/799437.jpg')}}") center no-repeat;
+                background-size: cover;
                 background-color: #fff;
-                color: #636b6f;
+                color:rgb(255, 255, 0);
                 font-family: 'Nunito', sans-serif;
-                font-weight: 200;
+                font-weight: 300;
                 height: 100vh;
                 margin: 0;
+                text-shadow  :5px  5px 5px #003366;
+
             }
 
             .full-height {
                 height: 100vh;
+
             }
 
             .flex-center {
@@ -52,26 +63,28 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 150px;
             }
 
             .links > a {
-                color: #636b6f;
+                color: #020100;
                 padding: 0 25px;
                 font-size: 13px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
+                background-color: #fff
             }
 
             .m-b-md {
                 margin-bottom: 30px;
             }
+
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref full-height" >
             @if (Route::has('user.login'))
                 <div class="top-right links">
                     @auth
@@ -103,6 +116,7 @@
                 <div class="title m-b-md">
                     apasto
                 </div>
+                
             </div>
         </div>
     </body>

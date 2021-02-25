@@ -25,10 +25,14 @@ class LinkController extends Controller
         return view('post.user.timeline',['posts' => $posts],);
     }
         //お店毎のタイムライン画面を表示
-    public function show($admin_id){
+    public function show(Admin $admin_id){
 
-        $posts =Post::where('admin_id',$admin_id)->latest()->get();
-        return view('post.user.show_timeline')->with('posts',$posts);
+        $user = Admin::find($admin_id->id);
+
+        $posts =Post::where('admin_id',$admin_id->id)->latest()->get();
+        return view('post.user.show_timeline',['posts' => $posts,'user_name' => $user ->name,]);
+        //,compact('posts'))
 }
+
 
 }

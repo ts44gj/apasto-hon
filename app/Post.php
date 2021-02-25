@@ -30,6 +30,15 @@ class Post extends Model
     public function admin(){
         return $this->belongsTo(Admin::class);
     }
+        public function like()
+{
+    return $this->hasMany(Like::class,'post_id','id');
+}
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class,)->withTimestamps();
+    }
 
 
 }

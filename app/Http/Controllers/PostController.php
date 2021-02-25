@@ -7,13 +7,10 @@ use App\Models\Admin;
 use App\Models\User;
 use App\Post;
 use Illuminate\Support\Facades\Auth;
-use \InterventionImage;
+use InterventionImage;
 
 class PostController extends Controller
 {
-
-
-
     public function __construct()
     {
         $this->middleware('auth:admin');
@@ -32,10 +29,12 @@ class PostController extends Controller
             $fileName=$request->file('image')->getClientOriginalName();
             //upload
             $request->file('image')->storeAs('public/images',$fileName);
-
-
-
+            //$file = $request->file('image');
             $fullFilePath = '/storage/images/'.$fileName;
+            //InterventionImage::make($file)->resize(300,200)->save('public/images',$fileName);
+            //$file=$request->file('image');
+            //$fullFilePath = InterventionImage::make($file)->resize(300,200)->save('/storage/images/',$fileName);
+
             $text = $request ->input('text');
 
             Post::create([
@@ -43,12 +42,37 @@ class PostController extends Controller
                 'name'=>\Auth::user()->name,
                 'image'=>$fullFilePath,
                 'text'=> $text
-            ]);
 
+            ]);
 
         }
         return redirect(route('admin.home.index'));
     }
+    //投稿削除
+    public function destroy($id){
+
+        $post = Post::findOrFail($id);
+        $post -> delete();
+        return redirect(route('admin.home.index'));
+    }
+
+    //投稿編集画面
+    public function edit($id){
+        $post = Post::findOrFail($id);
+        return view('post.admin.detail',['post'=>$post]);
+    }
+    //投稿編集実行
+    public function update(Request $request,$id){
+        $save = [
+        'admin_id' => \Auth::user()->id,
+        'name'=>\Auth::user()->name,
+        'text' => $request->text,
+    ];
+    Post::where('id', $id)->update($save);
+
+    return redirect('admin.show_timeline')->with('poststatus', '投稿を編集しました');
+}
+
 
      //タイムライン画面を表示
     public function admin_showTimeline(){
