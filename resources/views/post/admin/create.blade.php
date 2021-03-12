@@ -1,6 +1,6 @@
 @include('layouts.admin.app')
 @section('title','投稿')
-<a href="{{route('admin.home.index')}}">
+<a href="{{route('admin_Timeline')}}">
      <button class="btn btn-danger" type="submit">store_home</button>
 </a>
 

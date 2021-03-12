@@ -1,31 +1,42 @@
 @include('layouts.user.app')
 
 @section('content')
-    <a href="{{action('LinkController@showTimeline')}}">
+    <a href="{{ action('LinkController@showTimeline') }}">
         <button class="btn btn-danger" type="submit">all_timeline</button>
-    </a>
-    <br>
-    <br>
-    <a href="{{route('user.home.index')}}">
-        <button class="btn btn-danger" type="submit">home</button>
     </a>
 
     <div class="row justify-content-center">
-    <p>{{$user_name}}</p>
+        <h4>{{ $user_name }}</h4>
     </div>
-
- <div class="">
-
-      @foreach ($posts as $post )
-            <div class="row justify-content-center">
-                <img class="img-responsive" src="{{ asset($post -> image) }}">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                @foreach ($posts as $post)
+                    <div class="card-group">
+                        <div class="mt-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row justify-content-center">
+                                        <div class="card-img-top">
+                                            <div class="row justify-content-center">
+                                                <img class="image-resize " width="600px" height="auto"
+                                                    src="{{ asset($post->image) }}"></a>
+                                            </div>
+                                        </div>
+                                        <div class="card-text">
+                                            <div class="row justify-content-center">
+                                                <h6>{{ $post->text }}</h6>
+                                            </div>
+                                            <div class="row justify-content-center">
+                                                <h6>{{ $post->created_at }}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                @endforeach
             </div>
-            <div class="row justify-content-center">
-              <p class="">{{ $post -> text }}</p>
-            </div>
-            <div class="row justify-content-center">
-                <p class="">{{ $post -> created_at }}</p>
-            </div>
-      @endforeach
-</div>
-
+        </div>
+    </div>
+    </div>

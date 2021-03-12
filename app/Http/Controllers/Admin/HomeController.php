@@ -21,12 +21,17 @@ class HomeController extends Controller
 
     public function index()
     {
+        return view('admin.home');
+    }
+
+    /*public function index()
+    {
          $posts = Admin::latest()->get();
 
         return view('admin.home',[
           'posts' => $posts
         ]);
-    }
+    }*/
 
 }
 

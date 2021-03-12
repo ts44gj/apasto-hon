@@ -48,6 +48,8 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         return view('admin.auth.login');
+
+
     }
 
      public function logout(Request $request)
@@ -60,5 +62,18 @@ class LoginController extends Controller
     public function loggedOut(Request $request)
     {
         return redirect(route('admin.login'));
+    }
+
+    // ゲストユーザー用のユーザーIDを定数として定義
+    private const GUEST_ADMIN_ID =5;
+
+    // ゲストログイン処理
+    public function guestLogin()
+    {
+        // id=1 のゲストユーザー情報がDBに存在すれば、ゲストログインする
+        if (Auth::loginUsingId(self::GUEST_ADMIN_ID)) {
+            return redirect('admin/home');
+        }
+        return redirect('/');
     }
 }

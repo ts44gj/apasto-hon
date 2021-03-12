@@ -46,14 +46,14 @@ class PostController extends Controller
             ]);
 
         }
-        return redirect(route('admin.home.index'));
+        return redirect(route('admin_Timeline'));
     }
     //投稿削除
     public function destroy($id){
 
         $post = Post::findOrFail($id);
         $post -> delete();
-        return redirect(route('admin.home.index'));
+        return redirect(route('admin_Timeline'));
     }
 
     //投稿編集画面
@@ -70,7 +70,7 @@ class PostController extends Controller
     ];
     Post::where('id', $id)->update($save);
 
-    return redirect('admin.show_timeline')->with('poststatus', '投稿を編集しました');
+    return redirect(route('admin_Timeline'));
 }
 
 
@@ -78,7 +78,7 @@ class PostController extends Controller
     public function admin_showTimeline(){
 
         $posts = Post::latest()->get();
-        return view('post.admin.timeline',['posts' => $posts],);
+        return view('admin.home',['posts' => $posts],);
     }
 
      //お店毎のタイムライン画面を表示
