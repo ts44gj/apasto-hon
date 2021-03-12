@@ -16,7 +16,7 @@ return [
     'defaults' => [
           // デフォルトの認証をwebからuserに変更
         'guard' => 'user',
-        'passwords' => 'users',
+        'passwords' => 'user',
     ],
 
     /*

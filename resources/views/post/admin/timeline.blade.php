@@ -14,6 +14,9 @@
             <div class="row justify-content-center card-img-top"　>
                 <img class="img-responsive" src="{{ asset($post -> image)}}"  >
             </div>
+             <div class="row justify-content-center card-title">
+              <p class="">{{ $post -> name }}</p>
+            </div>
             <div class="row justify-content-center card-title">
               <p class="">{{ $post -> text }}</p>
             </div>
@@ -21,5 +24,5 @@
                 <p class="">{{ $post -> created_at }}</p>
             </div>
       @endforeach
-
+        </div>
 

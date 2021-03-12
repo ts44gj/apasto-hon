@@ -19,10 +19,16 @@ class LinkController extends Controller
     }
 
         //タイムライン画面を表示
+    //public function showTimeline(){
+
+       // $posts = Post::latest()->get();
+      //  return view('post.user.timeline',['posts' => $posts],);
+    //}
+    //タイムライン画面を表示
     public function showTimeline(){
 
         $posts = Post::latest()->get();
-        return view('post.user.timeline',['posts' => $posts],);
+        return view('user.home',['posts' => $posts],);
     }
         //お店毎のタイムライン画面を表示
     public function show(Admin $admin_id){
